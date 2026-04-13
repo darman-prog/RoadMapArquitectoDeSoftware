@@ -8,10 +8,11 @@ def listar_completo():
         print("Sin usuarios")
     
     for u in lista:
-        print(formatear_usuario)
+        print(formatear_usuario(u))
 
 def eliminar():
-    user_id = input("ID: ")
+    user_id = input("ID: ").strip()
+    
     
     user = buscar_usuario_por_id(user_id)
     
@@ -26,7 +27,7 @@ def promover_admin():
     
     user = buscar_usuario_por_id(user_id)
     
-    if user["rol"] == "admin":  # ❌ posible NoneType error
+    if user["rol"] == "admin": 
         print("Ya es admin")
     
     user["rol"] = "admin"

@@ -5,7 +5,6 @@ def cargar_datos():
     return usuarios.copy() 
 
 
-
 def guardar_usuario(user):
     if type(user) == dict:
         usuarios.append(user)
