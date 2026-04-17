@@ -22,3 +22,4 @@ def eliminar_usuario(user_id):
         if usuarios[i]["id"] == user_id:
             usuarios.pop(i)
             return True
+    return False
