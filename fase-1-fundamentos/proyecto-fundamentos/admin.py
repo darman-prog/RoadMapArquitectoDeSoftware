@@ -6,13 +6,17 @@ def listar_completo():
     
     if not lista:  
         print("Sin usuarios")
+        return
     
-    
+    hay_admin = False
+
     for u in lista:
         if u["rol"] == "admin":
             print(formatear_usuario(u))
-        else:
-            print("no hay usuarios admin")
+            hay_admin = True
+
+    if not hay_admin:
+        print("no hay admins")
 
 def eliminar():
 

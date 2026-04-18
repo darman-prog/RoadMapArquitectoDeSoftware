@@ -17,4 +17,4 @@ def validar_edad(edad):
     return False
 
 def formatear_usuario(user):
-    return f"{user['id']} - {user['nombre'].upper()} ({user['edad']})"
+    return f"{user['id']} - {user['nombre'].upper()} ({user['edad']}) ({user['rol']})"
