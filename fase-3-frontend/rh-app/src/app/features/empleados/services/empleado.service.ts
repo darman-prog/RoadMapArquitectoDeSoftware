@@ -25,8 +25,8 @@ export class EmpleadoServicio {
       return this.http.get<Empleado>(`${this.baseURL}/${idEmpleado}`);
     }
 
-  editarEmpleado(id: number, empleado: Empleado): Observable<Empleado> {
-      return this.http.put<Empleado>(`${this.baseURL}/${id}/`, empleado);
+  editarEmpleado(idEmpleado: number, empleado: Empleado): Observable<Empleado> {
+      return this.http.put<Empleado>(`${this.baseURL}/${idEmpleado}`, empleado);
     }
 
   actualizarEmpleado(idEmpleado: number, empleado: Empleado): Observable<Empleado> {

@@ -258,10 +258,81 @@
     height: 34px;
     justify-content: center;
   }
+}
+
+/* TOAST CORPORATIVO */
+.rh-toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1080;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.rh-toast-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  max-width: min(320px, calc(100vw - 2rem));
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.88));
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.25);
+  color: #FFFFFF;
+  pointer-events: auto;
+  animation: rh-toast-slide-in 320ms ease-out;
+}
+
+.rh-toast-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background-color: #0F172A;
+  color: #60A5FA;
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.18);
+}
+
+.rh-toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.rh-toast-title {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #EFF6FF;
+}
+
+.rh-toast-text {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #CBD5E1;
+  line-height: 1.4;
+}
+
+@keyframes rh-toast-slide-in {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
   .rh-avatar {
     width: 28px;
     height: 28px;
     font-size: 0.7rem;
   }
-}

@@ -1,15 +1,14 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Empleado } from '../../models/empleado.model';
 import { EmpleadoServicio } from '../../services/empleado.service';
-import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EliminarComponent } from '../eliminar/eliminar.component';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-lista',
-  imports: [RouterOutlet,CommonModule,EliminarComponent,RouterModule], // Necesario para inyectar las vistas según la URL actual
-  templateUrl: './lista.component.html', // Vinculo a su plantilla externa
+  imports: [CommonModule,EliminarComponent,RouterModule],
+  templateUrl: './lista.component.html',
   styleUrl: './lista.component.css'
 })
 export class ListaComponent implements OnInit {
@@ -22,6 +21,11 @@ export class ListaComponent implements OnInit {
   // Variables para guardar temporalmente al empleado que se quiere borrar
   idSeleccionado!: number;
   nombreSeleccionado: string = '';
+
+  // Toast emergente corporativo
+  toastMessage = signal('');
+  toastVisible = signal(false);
+  private toastTimeout: ReturnType<typeof setTimeout> | null = null;
 
   ngOnInit(): void {
     this.cargarEmpleados();
@@ -43,5 +47,23 @@ export class ListaComponent implements OnInit {
     this.idSeleccionado = id;
     this.nombreSeleccionado = nombre;
   }
-  
+
+  onEmpleadoEliminado(): void {
+    this.cargarEmpleados();
+    this.mostrarToast('Empleado borrado con éxito');
+  }
+
+  private mostrarToast(mensaje: string): void {
+    if (this.toastTimeout) {
+      clearTimeout(this.toastTimeout);
+    }
+
+    this.toastMessage.set(mensaje);
+    this.toastVisible.set(true);
+
+    this.toastTimeout = setTimeout(() => {
+      this.toastVisible.set(false);
+      this.toastTimeout = null;
+    }, 3600);
+  }
 }

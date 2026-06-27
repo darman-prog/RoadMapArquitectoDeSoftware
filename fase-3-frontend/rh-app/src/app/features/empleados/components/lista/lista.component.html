@@ -139,6 +139,19 @@
 <app-eliminar
   [idEmpleadoEliminar]="idSeleccionado"
   [nombreEmpleadoEliminar]="nombreSeleccionado"
-  (empleadoEliminado)="cargarEmpleados()"
+  (empleadoEliminado)="onEmpleadoEliminado()"
 >
 </app-eliminar>
+
+<div class="rh-toast-container"
+     *ngIf="toastVisible()"
+     role="status"
+     aria-live="polite">
+  <div class="rh-toast-card">
+    <div class="rh-toast-icon" aria-hidden="true">✓</div>
+    <div class="rh-toast-content">
+      <p class="rh-toast-title">Empleado borrado</p>
+      <p class="rh-toast-text">{{ toastMessage() }}</p>
+    </div>
+  </div>
+</div>
