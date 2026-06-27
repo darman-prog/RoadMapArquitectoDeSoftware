@@ -1,0 +1,13 @@
+.env
+
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+venv/
+ENV/
+env/
+
+.github/
+.github

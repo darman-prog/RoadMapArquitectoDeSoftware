@@ -1,0 +1,267 @@
+/* ══════════════════════════════════════════
+   TABLA
+   ══════════════════════════════════════════ */
+.rh-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--rh-font-body);
+}
+
+.rh-th {
+  padding: 0.85rem 1.25rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #474a4e;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background-color: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+  white-space: nowrap;
+}
+
+.rh-th--id {
+  width: 60px;
+  text-align: center;
+}
+
+/* ══════════════════════════════════════════
+   FILAS Y CELDAS
+   ══════════════════════════════════════════ */
+.rh-table-row {
+  border-bottom: 1px solid #F1F5F9;
+  transition: background-color 150ms ease;
+}
+
+.rh-table-row:last-child {
+  border-bottom: none;
+}
+
+.rh-table-row:hover {
+  background-color: #F7F9FF;
+}
+
+.rh-td {
+  padding: 0.9rem 1.25rem;
+  font-size: 0.875rem;
+  color: #1E293B;
+  vertical-align: middle;
+}
+
+.rh-td--id {
+  text-align: center;
+}
+
+/* ══════════════════════════════════════════
+   ID BADGE
+   ══════════════════════════════════════════ */
+.rh-id-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 24px;
+  padding: 0 6px;
+  background-color: #F1F5F9;
+  border: 1px solid #E2E8F0;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #434446;
+  letter-spacing: 0.02em;
+}
+
+/* ══════════════════════════════════════════
+   CELDA EMPLEADO — AVATAR + NOMBRE
+   ══════════════════════════════════════════ */
+.rh-employee-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.rh-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rh-navy-800) 0%, var(--rh-blue-500) 100%);
+  color: #ffffff;
+  font-family: var(--rh-font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.rh-employee-name {
+  font-weight: 500;
+  color: #a6b4d4;
+}
+
+/* ══════════════════════════════════════════
+   TAG DEPARTAMENTO
+   ══════════════════════════════════════════ */
+.rh-dept-tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #1D4ED8;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════
+   SUELDO
+   ══════════════════════════════════════════ */
+.rh-salary {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #d1daf0;
+  letter-spacing: 0.01em;
+}
+
+/* ══════════════════════════════════════════
+   BOTONES DE ACCIÓN
+   ══════════════════════════════════════════ */
+.rh-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rh-btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  font-family: var(--rh-font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background: transparent;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    box-shadow 200ms ease;
+  white-space: nowrap;
+}
+
+.rh-btn-action:focus-visible {
+  outline: 2px solid var(--rh-blue-400);
+  outline-offset: 2px;
+}
+
+/* Editar */
+.rh-btn-action--edit {
+  color: #1D4ED8;
+  border-color: #BFDBFE;
+  background-color: #EFF6FF;
+}
+
+.rh-btn-action--edit:hover {
+  background-color: #1D4ED8;
+  border-color: #1D4ED8;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);
+}
+
+/* Eliminar */
+.rh-btn-action--delete {
+  color: #DC2626;
+  border-color: #FECACA;
+  background-color: #FEF2F2;
+}
+
+.rh-btn-action--delete:hover {
+  background-color: #DC2626;
+  border-color: #DC2626;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
+}
+
+.rh-btn-action--delete:active {
+  background-color: #B91C1C;
+}
+
+/* ══════════════════════════════════════════
+   ESTADO VACÍO
+   ══════════════════════════════════════════ */
+.rh-td-empty {
+  padding: 0 !important;
+  border: none;
+}
+
+.rh-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.rh-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  background-color: #F1F5F9;
+  border: 1px dashed #CBD5E1;
+  border-radius: 50%;
+  color: #94A3B8;
+  margin-bottom: 0.5rem;
+}
+
+.rh-empty-title {
+  font-family: var(--rh-font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1E293B;
+  margin: 0;
+}
+
+.rh-empty-sub {
+  font-size: 0.82rem;
+  color: #64748B;
+  margin: 0;
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVO
+   ══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .rh-th,
+  .rh-td {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .rh-btn-action span {
+    display: none;
+  }
+
+  .rh-btn-action {
+    padding: 0.4rem;
+    width: 34px;
+    height: 34px;
+    justify-content: center;
+  }
+
+  .rh-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.7rem;
+  }
+}

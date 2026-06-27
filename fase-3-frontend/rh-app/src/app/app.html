@@ -1,0 +1,92 @@
+
+<!-- ② Fuentes corporativas vía Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+
+<nav class="rh-navbar navbar navbar-expand-lg" aria-label="Navegación principal">
+  <div class="container">
+
+    <!-- Marca con ícono SVG corporativo -->
+    <a class="rh-brand navbar-brand" routerLink="/empleados" aria-label="Recursos Humanos – Inicio">
+      <span class="rh-brand-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </span>
+      <span class="rh-brand-label">
+        <span class="rh-brand-name">Recursos Humanos</span>
+        <span class="rh-brand-sub">Sistema de Gestión</span>
+      </span>
+    </a>
+
+    <!-- ③ Toggler con ARIA completo -->
+    <button class="navbar-toggler rh-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Abrir menú de navegación">
+      <span class="rh-toggler-bar"></span>
+      <span class="rh-toggler-bar"></span>
+      <span class="rh-toggler-bar"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1" role="list">
+
+        <!-- ④ nav-item (no nav-node), con routerLinkActiveOptions -->
+        <li class="nav-item" role="listitem">
+          <a class="rh-nav-link nav-link"
+             routerLink="/empleados"
+             routerLinkActive="rh-nav-link--active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             aria-current="page">
+            <svg class="rh-nav-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+            Listado
+          </a>
+        </li>
+
+        <!-- ⑤ CTA visual diferenciado -->
+        <li class="nav-item" role="listitem">
+          <a class="rh-nav-cta"
+             routerLink="/agregar-empleado"
+             routerLinkActive="rh-nav-cta--active">
+            <svg class="rh-nav-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="8.5" cy="7" r="4"/>
+              <line x1="20" y1="8" x2="20" y2="14"/>
+              <line x1="23" y1="11" x2="17" y2="11"/>
+            </svg>
+            Agregar Empleado
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ⑥ Wrapper con id para el skip link -->
+<div class="rh-page-wrapper">
+  <div class="container">
+    <main id="main-content" tabindex="-1">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="rh-card rh-form-card mx-auto">
+
+  <!-- Header corporativo -->
+  <div class="rh-card-header">
+    <div class="rh-card-header-left">
+      <div>
+        <h2 class="rh-card-title">Modificar Empleado</h2>
+        <p class="rh-card-subtitle">Actualiza los datos del registro</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="rh-card-body rh-form-body">
+    <form #formEditar="ngForm"
+          (ngSubmit)="formEditar.form.valid && actualizar()"
+          novalidate>
+
+      <!-- Nombre -->
+      <div class="rh-field">
+        <label for="nombre" class="rh-label">Nombre Completo</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          class="rh-input"
+          placeholder="Ej. Juan García López"
+          [(ngModel)]="empleado.nombre"
+          required
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Departamento -->
+      <div class="rh-field">
+        <label for="departamento" class="rh-label">Departamento / Área</label>
+        <input
+          type="text"
+          id="departamento"
+          name="departamento"
+          class="rh-input"
+          placeholder="Ej. Tecnología, Ventas, RRHH..."
+          [(ngModel)]="empleado.departamento"
+          required
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- Sueldo con prefijo $ -->
+      <div class="rh-field">
+        <label for="sueldo" class="rh-label">Sueldo Mensual</label>
+        <div class="rh-input-group">
+          <span class="rh-input-prefix" aria-hidden="true">$</span>
+          <input
+            type="number"
+            id="sueldo"
+            name="sueldo"
+            class="rh-input rh-input--has-prefix"
+            placeholder="0.00"
+            [(ngModel)]="empleado.sueldo"
+            required
+            min="0.01"
+            step="0.01"
+          >
+        </div>
+      </div>
+
+      <!-- Acciones -->
+      <div class="rh-form-actions">
+        <a routerLink="/empleados" class="rh-btn-cancel">
+          Cancelar
+        </a>
+        <button
+          type="submit"
+          class="rh-btn-save"
+          [disabled]="!formEditar.form.valid"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+            <polyline points="17 21 17 13 7 13 7 21"/>
+            <polyline points="7 3 7 8 15 8"/>
+          </svg>
+          Actualizar Cambios
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

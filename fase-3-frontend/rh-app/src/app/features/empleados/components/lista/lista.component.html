@@ -1,0 +1,144 @@
+<!-- listado-empleados.component.html -->
+
+<div class="rh-card">
+
+  <!-- ① Header corporativo con conteo dinámico -->
+  <div class="rh-card-header">
+    <div class="rh-card-header-left">
+      <div>
+        <h2 class="rh-card-title">Listado de Empleados</h2>
+        <p class="rh-card-subtitle">
+          {{ empleados().length }} empleado{{ empleados().length !== 1 ? 's' : '' }} registrado{{ empleados().length !== 1 ? 's' : '' }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② Card body con tabla mejorada -->
+  <div class="rh-card-body">
+    <div class="table-responsive">
+      <table class="rh-table table align-middle mb-0"
+            aria-label="Tabla de empleados registrados">
+        <thead>
+          <tr>
+            <th scope="col" class="rh-th rh-th--id">#</th>
+            <th scope="col" class="rh-th">Empleado</th>
+            <th scope="col" class="rh-th">Departamento</th>
+            <th scope="col" class="rh-th text-end">Sueldo Base</th>
+            <th scope="col" class="rh-th text-end">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (emp of empleados(); track emp.idEmpleado) {
+            <tr class="rh-table-row">
+
+              <!-- ID sutil -->
+              <td class="rh-td rh-td--id">
+                <span class="rh-id-num" aria-label="ID {{ emp.idEmpleado }}">
+                  {{ emp.idEmpleado }}
+                </span>
+              </td>
+
+              <!-- ③ Celda empleado con avatar inicial -->
+              <td class="rh-td">
+                <div class="rh-employee-cell">
+                  <span class="rh-avatar" aria-hidden="true">
+                    {{ emp.nombre.charAt(0).toUpperCase() }}
+                  </span>
+                  <span class="rh-employee-name">{{ emp.nombre }}</span>
+                </div>
+              </td>
+
+              <!-- ④ Departamento como tag pill -->
+              <td class="rh-td">
+                <span class="rh-dept-tag">{{ emp.departamento }}</span>
+              </td>
+
+              <!-- ⑤ Sueldo con formato corporativo -->
+              <td class="rh-td text-end">
+                <span class="rh-salary">
+                  {{ emp.sueldo | currency: 'USD' : 'symbol' : '1.2-2' }}
+                </span>
+              </td>
+
+              <!-- ⑥ Acciones con aria-label contextual y gap -->
+              <td class="rh-td text-end">
+                <div class="rh-actions" role="group"
+                     [attr.aria-label]="'Acciones para ' + emp.nombre">
+                  <a
+                    [routerLink]="['/editar-empleado', emp.idEmpleado]"
+                    class="rh-btn-action rh-btn-action--edit"
+                    [attr.aria-label]="'Editar empleado ' + emp.nombre"
+                    title="Editar"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    </svg>
+                    <span>Editar</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    class="rh-btn-action rh-btn-action--delete"
+                    (click)="prepararEliminacion(emp.idEmpleado!, emp.nombre)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalEliminar"
+                    [attr.aria-label]="'Eliminar empleado ' + emp.nombre"
+                    title="Eliminar"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                      <polyline points="3 6 5 6 21 6"/>
+                      <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                      <path d="M10 11v6"/>
+                      <path d="M14 11v6"/>
+                      <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+                    </svg>
+                    <span>Eliminar</span>
+                  </button>
+                </div>
+              </td>
+
+            </tr>
+          } @empty {
+            <!-- ⑦ Empty state orientado a la acción -->
+            <tr>
+              <td colspan="5" class="rh-td-empty">
+                <div class="rh-empty-state">
+                  <span class="rh-empty-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <line x1="22" y1="11" x2="16" y2="11"/>
+                    </svg>
+                  </span>
+                  <p class="rh-empty-title">Sin empleados registrados</p>
+                  <p class="rh-empty-sub">
+                    Aún no hay empleados en el sistema. Usa el botón
+                    <strong>Agregar Empleado</strong> para comenzar.
+                  </p>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ Modal fuera del card y table-responsive -->
+<app-eliminar
+  [idEmpleadoEliminar]="idSeleccionado"
+  [nombreEmpleadoEliminar]="nombreSeleccionado"
+  (empleadoEliminado)="cargarEmpleados()"
+>
+</app-eliminar>

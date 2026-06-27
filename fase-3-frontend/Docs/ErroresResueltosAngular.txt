@@ -1,0 +1,51 @@
+## Errores tratados hasta ahora
+
+### 1. `Property 'empleados' does not exist on type 'Lista'.`
+- Causa: Angular estaba usando una clase `Lista` incorrecta en lugar del componente real `ListaComponent`.
+- Detalle: Existía un archivo `src/app/empleados/lista/lista.ts` con `export class Lista {}` que entraba en conflicto con el componente.
+- Solución: eliminar/ignorar ese archivo duplicado y usar `ListaComponent` como componente principal con la propiedad `empleados`.
+
+### 2. `No pipe found with name 'currency'.`
+- Causa: El componente era standalone y no importaba los pipes básicos de Angular.
+- Detalle: El pipe `currency` viene de `CommonModule`, y en un componente standalone hay que registrarlo en `imports`.
+- Solución: importar `CommonModule` desde `@angular/common` y ponerlo en `imports: [CommonModule]` del componente `ListaComponent`.
+
+### 3. `El módulo '"./app/app"' no tiene ningún miembro 'App' exportado.`
+- Causa: El bootstrap de Angular en main.ts intentaba arrancar `App`, pero app.ts exportaba una clase con otro nombre (`AppComponent`).
+- Solución: renombrar la clase exportada a `App` en `src/app/app.ts`, de modo que coincida con `import { App } from './app/app';`.
+
+### 4. `No se pueden encontrar declaraciones de módulo o tipo para la importación de efectos secundarios de 'zone.js'.`
+- Causa: `zone.js` se estaba importando en main.ts, pero no estaba instalado en package.json / `node_modules`.
+- Solución: instalar `zone.js` con `npm install zone.js`.
+
+## Resumen general
+- El primer error era un conflicto de clases/componentes en la estructura de archivos.
+- El segundo era un problema de dependencias de Angular para componentes standalone.
+- El tercero era un nombre exportado incorrecto en el componente raíz.
+- El cuarto era una dependencia ausente del entorno de Angular.
+
+> Si quieres, puedo ahora revisar si hay algún error residual tras estos cambios y darte el siguiente paso concreto.
+
+Solución aplicada
+1. Causa Raíz
+El compilador TypeScript no sabía cuál era la carpeta raíz de los archivos de prueba (rootDir) y por defecto infirió ./src/app, lo que chocó con la configuración del outDir.
+
+2. Solución Paso a Paso
+Abre tsconfig.spec.json.
+Dentro de compilerOptions, añade "rootDir": "./src" para fijar explícitamente la carpeta raíz de los archivos fuente de pruebas.
+3. Código Corregido
+
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "rootDir": "./src",
+    "types": [
+      "vitest/globals"
+    ]
+  },
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.spec.ts"
+  ]
+}

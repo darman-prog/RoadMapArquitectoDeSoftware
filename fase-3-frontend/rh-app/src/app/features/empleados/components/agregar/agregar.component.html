@@ -1,0 +1,87 @@
+<div class="rh-card rh-form-card mx-auto">
+  <!-- Header corporativo -->
+  <div class="rh-card-header">
+    <div class="rh-card-header-left">
+      <div>
+        <h2 class="rh-card-title">Registrar Empleado</h2>
+        <p class="rh-card-subtitle">Completa los datos del nuevo registro</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="rh-card-body rh-form-body">
+    <form #formEmpleado="ngForm" (ngSubmit)="formEmpleado.form.valid && guardar()" novalidate>
+      <!-- Nombre -->
+      <div class="rh-field">
+        <label for="nombre" class="rh-label">Nombre del Empleado</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          class="rh-input"
+          placeholder="Ej. María López"
+          [(ngModel)]="nuevoEmpleado.nombre"
+          required
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- Departamento -->
+      <div class="rh-field">
+        <label for="departamento" class="rh-label">Departamento / Área</label>
+        <input
+          type="text"
+          id="departamento"
+          name="departamento"
+          class="rh-input"
+          placeholder="Ej. Tecnología, Ventas, RRHH..."
+          [(ngModel)]="nuevoEmpleado.departamento"
+          required
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- Sueldo con prefijo $ -->
+      <div class="rh-field">
+        <label for="sueldo" class="rh-label">Sueldo Mensual</label>
+        <div class="rh-input-group">
+          <span class="rh-input-prefix" aria-hidden="true">$</span>
+          <input
+            type="number"
+            id="sueldo"
+            name="sueldo"
+            class="rh-input rh-input--has-prefix"
+            placeholder="0.00"
+            [(ngModel)]="nuevoEmpleado.sueldo"
+            required
+            min="0.01"
+            step="0.01"
+          />
+        </div>
+      </div>
+
+      <!-- Acciones -->
+      <div class="rh-form-actions">
+        <a [routerLink]="['/empleados']" class="rh-btn-cancel"> Cancelar </a>
+        <button type="submit" class="rh-btn-save" [disabled]="!formEmpleado.form.valid">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          Guardar Registro
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

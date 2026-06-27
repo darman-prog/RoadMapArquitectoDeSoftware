@@ -1,0 +1,219 @@
+/* ══════════════════════════════════════════
+   CARD — CONSTRAINT DE ANCHO
+   ══════════════════════════════════════════ */
+.rh-form-card {
+  max-width: 580px;
+}
+
+/* ══════════════════════════════════════════
+   CUERPO DEL FORMULARIO
+   ══════════════════════════════════════════ */
+.rh-form-body {
+  padding: 1.75rem;
+}
+
+/* ══════════════════════════════════════════
+   CAMPOS
+   ══════════════════════════════════════════ */
+.rh-field {
+  margin-bottom: 1.25rem;
+}
+
+.rh-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #64748B;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+  font-family: var(--rh-font-body);
+}
+
+/* ══════════════════════════════════════════
+   INPUTS
+   ══════════════════════════════════════════ */
+.rh-input {
+  width: 100%;
+  padding: 0.65rem 0.875rem;
+  font-family: var(--rh-font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #0F172A;
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  outline: none;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.rh-input:focus {
+  border-color: var(--rh-blue-500);
+  box-shadow: 0 0 0 3px rgba(47, 127, 232, 0.12);
+}
+
+.rh-input::placeholder {
+  color: #2d3846;
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+/* Quitar flechas del input number */
+.rh-input[type='number']::-webkit-inner-spin-button,
+.rh-input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.rh-input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* ══════════════════════════════════════════
+   INPUT CON PREFIJO "$"
+   ══════════════════════════════════════════ */
+.rh-input-group {
+  display: flex;
+  align-items: stretch;
+}
+
+.rh-input-prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 0.875rem;
+  background-color: #F8FAFC;
+  border: 1.5px solid #E2E8F0;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748B;
+  font-family: var(--rh-font-body);
+  user-select: none;
+  transition: border-color 200ms ease;
+}
+
+.rh-input--has-prefix {
+  flex: 1;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Focus sincronizado en el grupo completo */
+.rh-input-group:focus-within .rh-input-prefix {
+  border-color: var(--rh-blue-500);
+}
+
+.rh-input-group:focus-within .rh-input--has-prefix {
+  border-color: var(--rh-blue-500);
+  box-shadow: 0 0 0 3px rgba(47, 127, 232, 0.12);
+}
+
+/* ══════════════════════════════════════════
+   ACCIONES
+   ══════════════════════════════════════════ */
+.rh-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #F1F5F9;
+}
+
+/* Cancelar */
+.rh-btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1.25rem;
+  border-radius: 8px;
+  font-family: var(--rh-font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748B;
+  border: 1.5px solid #E2E8F0;
+  background-color: #FFFFFF;
+  text-decoration: none;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+  cursor: pointer;
+}
+
+.rh-btn-cancel:hover {
+  background-color: #F8FAFC;
+  border-color: #CBD5E1;
+  color: #1E293B;
+}
+
+.rh-btn-cancel:focus-visible {
+  outline: 2px solid var(--rh-blue-400);
+  outline-offset: 2px;
+}
+
+/* Guardar / Submit */
+.rh-btn-save {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.35rem;
+  border-radius: 8px;
+  font-family: var(--rh-font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background-color: var(--rh-blue-500);
+  border: 1.5px solid var(--rh-blue-500);
+  cursor: pointer;
+  transition:
+    background-color 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease,
+    opacity 200ms ease;
+}
+
+.rh-btn-save:hover:not(:disabled) {
+  background-color: var(--rh-blue-400);
+  box-shadow: 0 4px 16px rgba(47, 127, 232, 0.35);
+  transform: translateY(-1px);
+}
+
+.rh-btn-save:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.rh-btn-save:focus-visible {
+  outline: 2px solid var(--rh-blue-300);
+  outline-offset: 2px;
+}
+
+/* Estado deshabilitado */
+.rh-btn-save:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVO
+   ══════════════════════════════════════════ */
+@media (max-width: 600px) {
+  .rh-form-body {
+    padding: 1.25rem;
+  }
+
+  .rh-form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .rh-btn-cancel,
+  .rh-btn-save {
+    justify-content: center;
+    width: 100%;
+  }
+}

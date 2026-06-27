@@ -1,0 +1,279 @@
+/* ══════════════════════════════════════════
+   TOKENS DE DISEÑO — SISTEMA RH CORPORATIVO
+   ══════════════════════════════════════════ */
+:root {
+  --rh-font-display: 'Syne', sans-serif;
+  --rh-font-body:    'Figtree', sans-serif;
+
+  /* Paleta navy corporativa */
+  --rh-navy-950:   #07111E;
+  --rh-navy-900:   #0D1B2A;
+  --rh-navy-800:   #152638;
+  --rh-navy-700:   #1E3551;
+
+  /* Acento institucional */
+  --rh-blue-500:   #2F7FE8;
+  --rh-blue-400:   #5B9DF5;
+  --rh-blue-300:   #93BBFA;
+
+  /* Neutros */
+  --rh-white:        #FFFFFF;
+  --rh-text-muted:   rgba(255, 255, 255, 0.55);
+  --rh-border-dim:   rgba(255, 255, 255, 0.07);
+  --rh-border-glow:  rgba(47, 127, 232, 0.35);
+
+  --rh-nav-height: 66px;
+  --rh-radius-sm:  6px;
+  --rh-radius-md:  10px;
+  --rh-transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tipografía global */
+body {
+  font-family: var(--rh-font-body);
+  background-color: #F0F4F8;
+  color: #1A2332;
+}
+
+/* ══════════════════════════════════════════
+   SKIP LINK (accesibilidad)
+   ══════════════════════════════════════════ */
+.rh-skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--rh-blue-500);
+  color: var(--rh-white);
+  font-family: var(--rh-font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0 0 var(--rh-radius-sm) var(--rh-radius-sm);
+  text-decoration: none;
+  transition: top var(--rh-transition);
+}
+.rh-skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--rh-blue-300);
+  outline-offset: 2px;
+}
+
+/* ══════════════════════════════════════════
+   NAVBAR
+   ══════════════════════════════════════════ */
+.rh-navbar {
+  background-color: var(--rh-navy-900);
+  border-bottom: 1px solid var(--rh-border-dim);
+  min-height: var(--rh-nav-height);
+  padding-block: 0;
+  box-shadow:
+    0 1px 0 0 var(--rh-border-dim),
+    0 4px 24px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Línea de acento superior — toque de identidad corporativa */
+.rh-navbar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rh-blue-500) 0%, var(--rh-blue-300) 100%);
+}
+
+/* ══════════════════════════════════════════
+   MARCA / BRAND
+   ══════════════════════════════════════════ */
+.rh-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  padding-block: 0.75rem;
+}
+.rh-brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background-color: var(--rh-navy-800);
+  border: 1px solid var(--rh-border-glow);
+  border-radius: var(--rh-radius-sm);
+  color: var(--rh-blue-400);
+  transition: background-color var(--rh-transition), transform var(--rh-transition);
+  flex-shrink: 0;
+}
+.rh-brand-label {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.rh-brand-name {
+  font-family: var(--rh-font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--rh-white);
+  letter-spacing: 0.01em;
+}
+.rh-brand-sub {
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--rh-text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════
+   TOGGLER HAMBURGUESA PERSONALIZADO
+   ══════════════════════════════════════════ */
+.rh-toggler {
+  border: 1px solid var(--rh-border-dim);
+  border-radius: var(--rh-radius-sm);
+  padding: 0.5rem 0.6rem;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color var(--rh-transition);
+}
+.rh-toggler:hover {
+  border-color: var(--rh-blue-500);
+}
+.rh-toggler:focus-visible {
+  outline: 2px solid var(--rh-blue-400);
+  outline-offset: 2px;
+}
+.rh-toggler-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--rh-white);
+  border-radius: 2px;
+  transition: opacity var(--rh-transition), transform var(--rh-transition);
+}
+
+/* ══════════════════════════════════════════
+   NAV LINKS
+   ══════════════════════════════════════════ */
+.rh-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem !important;
+  border-radius: var(--rh-radius-sm);
+  font-family: var(--rh-font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--rh-text-muted) !important;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition:
+    color var(--rh-transition),
+    background-color var(--rh-transition);
+  position: relative;
+}
+.rh-nav-link:hover {
+  color: var(--rh-white) !important;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.rh-nav-link:focus-visible {
+  outline: 2px solid var(--rh-blue-400);
+  outline-offset: 2px;
+}
+
+/* Estado activo — indicador inferior */
+.rh-nav-link--active {
+  color: var(--rh-white) !important;
+  background-color: rgba(47, 127, 232, 0.12);
+}
+.rh-nav-link--active::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background-color: var(--rh-blue-400);
+  border-radius: 2px;
+}
+
+.rh-nav-icon {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+/* ══════════════════════════════════════════
+   CTA — BOTÓN "AGREGAR EMPLEADO"
+   ══════════════════════════════════════════ */
+.rh-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1rem;
+  border-radius: var(--rh-radius-sm);
+  background-color: var(--rh-blue-500);
+  color: var(--rh-white) !important;
+  font-family: var(--rh-font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    background-color var(--rh-transition),
+    box-shadow var(--rh-transition),
+    transform var(--rh-transition);
+}
+.rh-nav-cta:hover {
+  background-color: var(--rh-blue-400);
+  box-shadow: 0 4px 16px rgba(47, 127, 232, 0.4);
+  transform: translateY(-1px);
+  color: var(--rh-white) !important;
+}
+.rh-nav-cta:active {
+  transform: translateY(0);
+}
+.rh-nav-cta:focus-visible {
+  outline: 2px solid var(--rh-blue-300);
+  outline-offset: 2px;
+}
+.rh-nav-cta--active {
+  background-color: var(--rh-blue-400);
+  box-shadow: 0 2px 8px rgba(47, 127, 232, 0.35);
+}
+
+/* ══════════════════════════════════════════
+   LAYOUT PRINCIPAL
+   ══════════════════════════════════════════ */
+.rh-page-wrapper {
+  padding-block: 2rem 3rem;
+  min-height: calc(100dvh - var(--rh-nav-height));
+}
+
+main:focus {
+  outline: none; /* el skip link lo enfoca, no necesita outline visual */
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVO — MENÚ COLAPSADO
+   ══════════════════════════════════════════ */
+@media (max-width: 991.98px) {
+  .rh-navbar .navbar-collapse {
+    padding-block: 0.75rem 1rem;
+    border-top: 1px solid var(--rh-border-dim);
+    margin-top: 0.5rem;
+  }
+  .rh-nav-link,
+  .rh-nav-cta {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .rh-nav-link--active::after {
+    display: none; /* el fondo ya indica estado activo en mobile */
+  }
+  .rh-nav-cta {
+    margin-top: 0.5rem;
+  }
+}
